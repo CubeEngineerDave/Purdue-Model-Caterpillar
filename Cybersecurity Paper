@@ -1,0 +1,130 @@
+Cybersecurity Purdue Model based level Defense System
+(david.johnson8@cat.com)
+David C. Johnson, IEEE member
+
+Abstract
+This paper investigates the Purdue Model for Industrial Control System (ICS) cybersecurity and examines its application within large manufacturing organizations such as Caterpillar, Komatsu, and John Deere. The Purdue Model provides a layered architecture that separates Information Technology (IT) and Operational Technology (OT) environments, reducing cyber risk by controlling communication pathways between enterprise systems and industrial control systems. This paper analyzes the model’s structure, explains the importance of segmentation, evaluates system performance through modern Security Operations Center (SOC) tools, and identifies key vendors supplying hardware and software used across Purdue levels. The goal is to demonstrate how the Purdue Model can be adapted to strengthen industrial cybersecurity defenses against modern threats.
+Index Terms
+Zero Trust Architecture, Intrusion Detection, Access Control, Identity and Access Management (IAM), Multi-Factor Authentication (MFA), Encryption, Public Key Infrastructure (PKI), Vulnerability Assessment, Penetration Testing, Secure Software Development Lifecycle (SSDLC), Threat Modeling, Cyber-Physical Systems Security, Wireless Security, Supply Chain Security, Post-Quantum Cryptography, Incident Response, Regulatory Compliance, Confidential Computing, Cloud Security, API Security
+I. INTRODUCTION
+Cybersecurity in industrial environments involves protecting interconnected systems, networks, and machinery from unauthorized access, disruption, or manipulation. Modern manufacturing facilities rely on both IT (Information Technology) systems and OT (Operational Technology) systems, each with distinct functions and security requirements. The Purdue Model provides a structured, layered approach to separating these environments using firewalls, segmentation, and controlled communication pathways.
+Why OT/ICS Security Matters
+The importance of OT/ICS security becomes clear when considering that the operational continuity and physical safety of an industrial organization depend on securing every potential point of entry. This includes not only traditional IT access pathways but also the computer-based interfaces, control systems, and networked equipment that support manufacturing operations.
+What This Paper Demonstrates
+This paper provides an in-depth examination of the Purdue Model architecture and illustrates how the separation of functional levels—particularly the boundary between IT and OT—forms a critical defensive mechanism against cyber threats. The analysis highlights how layered segmentation reduces lateral movement, limits exposure, and enhances overall system resilience.
+What the Reader Will Learn
+The reader will gain an understanding of how the Purdue Model can be adapted across different industrial environments, such as Caterpillar, Komatsu, or John Deere, to create an effective cybersecurity defense structure. The paper explains how organizations can tailor the model’s layered approach to meet unique operational requirements while maintaining strong protection against external cyberattacks.
+ 
+Fig. 1. The Purdue System
+
+Background
+The Purdue Model consists of six levels (0–5), ranging from enterprise systems at the top to physical processes at the bottom. Although originally designed to organize industrial processes, it has become a foundational cybersecurity framework referenced in standards such as NIST SP 800 82 and ISA/IEC 62443.
+“The Purdue Model is a framework used to separate and secure Operational Technology (OT) environments from Information Technology (IT) environments in industrial organizations… It is widely referenced in industrial cybersecurity standards and guidance such as NIST SP 800 82 and ISA/IEC 62443.” [1]
+Threat Landscape
+Industrial environments face numerous cyber threats, including:
+•	Ransomware attempting lateral movement
+•	Phishing leading to credential theft
+•	Remote access abuse
+•	Supply chain compromise
+•	OT malware (Industroyer, Triton, Stuxnet)
+These threats target both IT and OT systems, making segmentation essential.
+II. SYSTEM DESIGN
+A. Purdue Model Architecture (Levels 0–5)
+The Purdue Model organizes industrial systems into hierarchical layers:
+•	Level 5 – Enterprise Network: Cloud services, ERP, email, corporate IT.
+•	Level 4 – Business Planning & Logistics: MES, scheduling, production planning.
+•	Level 3 – Operations & Control: SCADA, historians, supervisory systems.
+•	Level 2 – Area Supervisory Control: HMIs, local SCADA nodes.
+•	Level 1 – Basic Control: PLCs, RTUs, controllers.
+•	Level 0 – Physical Process: Sensors, actuators, robots, machinery.
+Data flows upward from Level 0 to Level 5, while commands flow downward. This separation ensures that enterprise systems cannot directly manipulate physical machinery without passing through controlled layers.
+B. IT/OT Segmentation and Security Boundaries
+Segmentation is the core security principle of the Purdue Model. IT and OT systems must be separated to prevent cyber threats originating in enterprise networks from reaching industrial control systems.
+Key segmentation components include:
+•	Level 3.5 Industrial DMZ: A buffer zone containing jump servers, patch repositories, and monitoring tools.
+•	Firewalls: Enforce strict communication rules between levels.
+•	Zero Trust Architecture: Ensures no implicit trust between IT and OT systems.
+•	Access Control: Limits who can interact with ICS devices.
+•	SOC Tool Mapping:
+o	Sentinel → Levels 4–5
+o	Defender → IT endpoints
+o	Claroty/Nozomi → Levels 0–3
+Segmentation prevents lateral movement, ensuring that a compromise in IT does not automatically lead to OT disruption.
+C. Industrial Control Systems and Cyber-Physical Components
+Industrial Control Systems (ICS) form the core of OT environments. These include:
+•	PLCs (Programmable Logic Controllers)
+•	RTUs (Remote Terminal Units)
+•	HMIs (Human-Machine Interfaces)
+•	SCADA systems
+•	Sensors, actuators, and robotics
+ 
+Cyber-Physical Systems (CPS) integrate physical machinery with digital control, cloud connectivity, and enterprise systems. This hierarchy aligns with the Purdue Model: ICS is a subset of OT, and OT is a subset of CPS.
+Real-world examples at Caterpillar include:
+•	Welding robots
+•	CNC machines
+•	Assembly line automation
+•	Telemetry-enabled heavy equipment
+ICS devices differ from IT systems because they prioritize availability and safety over confidentiality, making them vulnerable to cyber threats if not properly segmented.
+III. SYSTEM PERFORMANCE
+System performance in an OT/ICS cybersecurity architecture refers to the ability of monitoring tools, segmentation controls, and incident response processes to detect, analyze, and respond to cyber threats across the Purdue Model’s layered environment.
+A. Monitoring Across Purdue Levels
+Security tools operate at different layers:
+•	Microsoft Sentinel: SIEM visibility across Levels 4–5.
+•	Microsoft Defender: Endpoint protection across IT systems.
+•	Claroty / Nozomi Networks: Deep OT visibility across Levels 0–3.
+•	ServiceNow: Incident tracking across all layers.
+B. Integrated SOC Workflow
+A typical investigation may involve:
+1.	Sentinel detects anomalous login activity.
+2.	Defender identifies suspicious process execution.
+3.	Claroty/Nozomi detect abnormal PLC communication.
+4.	ServiceNow coordinates escalation to IT and OT teams.
+This integrated workflow ensures rapid detection and response.
+C. Performance Metrics
+Key performance indicators include:
+•	Mean Time to Detect (MTTD)
+•	Mean Time to Respond (MTTR)
+•	False positive rate
+•	OT protocol coverage
+•	Segmentation effectiveness
+•	Network visibility
+High-performing systems provide rapid detection, accurate classification, and clear visibility across all Purdue levels.
+D. Packet-Level Analysis Using Wireshark
+Packet-level analysis is essential for validating alerts and understanding network behavior. Wireshark enables analysts to inspect:
+•	DNS queries
+•	TCP handshakes
+•	HTTP requests
+•	SMB traffic
+•	ICS protocol communication
+Wireshark supports investigations initiated by Sentinel, Defender, Claroty, or Nozomi by providing granular visibility into suspicious activity. It is particularly valuable for detecting early indicators of compromise such as abnormal PLC polling, unauthorized cross-level communication, or repeated DNS failures associated with malware.
+IV. VENDORS WHO DEVELOP/SUPPLY HARDWARE AND SOFTWARE FOR THE SYSTEM
+Industrial organizations rely on a combination of ICS hardware vendors, OT security platforms, network segmentation technologies, and enterprise SOC tools to implement the Purdue Model effectively.
+A. Industrial Control System (ICS) Vendors
+•	Rockwell Automation
+•	Siemens
+•	Honeywell
+•	Schneider Electric
+•	Emerson
+These vendors supply PLCs, RTUs, HMIs, sensors, actuators, and SCADA systems.
+B. Operational Technology (OT) Security Vendors
+•	Claroty
+•	Nozomi Networks
+•	Dragos
+These platforms analyze ICS protocols and detect anomalous device behavior.
+C. Network Segmentation and Firewall Vendors
+•	Palo Alto Networks
+•	Fortinet
+•	Cisco
+•	Check Point
+These vendors enforce communication boundaries between IT and OT.
+D. Enterprise SOC and IT Security Vendors
+•	Microsoft Sentinel
+•	Microsoft Defender
+•	Splunk
+•	CrowdStrike
+•	ServiceNow
+These tools provide SIEM visibility, endpoint protection, identity security, and incident management.
+V. CONCLUSION
+The Purdue Model remains a foundational architecture for securing industrial environments by enforcing strict separation between IT and OT systems. Through layered segmentation, dedicated monitoring tools, and adherence to industrial cybersecurity standards, organizations such as Caterpillar, Komatsu, and John Deere can reduce cyber risk and improve operational resilience. As cyber-physical systems evolve and manufacturing environments become increasingly connected, adopting the Purdue Model with modern SOC tools, OT monitoring platforms, and packet-level analysis techniques such as Wireshark will be essential for maintaining secure and reliable industrial operations.
+References
+[1] Claroty, “ICS Security: The Purdue Model,” claroty.com. [2] NIST SP 800 82, “Guide to Industrial Control System Security.” [3] ISA/IEC 62443, “Industrial Automation and Control Systems Security.”
